@@ -4,16 +4,13 @@ on:
     types: [published]
 jobs:
   publish:
-    strategy:
-      matrix:
-        architecture: ["x64", "aarch64"]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v1
       with:
         python-version: '3.9'
-        architecture: ${{ matrix.architecture }}
+        architecture: 'x64'
     - run: pip install pip==22.1.2 wheel==0.37.1 build==0.8.0
     - run: python -m build --sdist
     - uses: Flared/python-publish-action@v0.2.1
