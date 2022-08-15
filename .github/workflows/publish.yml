@@ -3,10 +3,10 @@ on:
   release:
     types: [published]
 jobs:
-  strategy:
-    matrix:
-      architecture: ["x64", "arm64"]
   publish:
+    strategy:
+      matrix:
+        architecture: ["x64", "arm64"]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
